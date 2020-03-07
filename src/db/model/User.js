@@ -4,22 +4,23 @@
  */
 
 const seq = require('../seq')
+const { STRING, DECIMAL } = require('../types')
 
 // users
 const User = seq.define('user', {
     userName: {
-        type: Sequelize.STRING,//类型
-        allowNull: false,//是否可以为空
+        type: STRING,//类型
+        allowNull: false,//是否可以为空WW
         unique: true,//是否唯一
         comment: '用户名，唯一'
     },
     password: {
-        type: Sequelize.STRING,
+        type: STRING,
         allowNull: false,
         comment: '密码'
     },
     nickName: {
-        type: Sequelize.STRING,
+        type: STRING,
         allowNull: false,
         comment: '昵称'
     },
@@ -30,11 +31,11 @@ const User = seq.define('user', {
         comment: '性别（1 男性，2 女性，3 保密）'
     },
     picture: {
-        type: Sequelize.STRING,
+        type: STRING,
         comment: '头像，图片地址'
     },
     city: {
-        type: Sequelize.STRING,
+        type: STRING,
         comment: '城市'
     }
 })
