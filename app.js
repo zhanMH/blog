@@ -5,12 +5,25 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
+const cors = require('koa2-cors')
 
-const index = require('./routes/index')
-const users = require('./routes/users')
+
+// const index = require('./routes/index')
+const users = require('./src/routes/api/user')
 
 // error handler
 onerror(app)
+
+app.use(cors({
+  origin: function (ctx) {
+      return ctx.header.origin; // 允许来自所有域名请求
+  },
+  maxAge: 5,
+  credentials: true, //是否允许发送Cookie
+  allowMethods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], //设置所允许的HTTP请求方法
+  allowHeaders: ['Content-Type', 'Authorization', 'Accept'], //设置服务器支持的所有头信息字段
+  exposeHeaders: ['WWW-Authenticate', 'Server-Authorization'] //设置获取其他自定义字段
+}))
 
 // middlewares
 app.use(bodyparser({
@@ -33,7 +46,6 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(index.routes(), index.allowedMethods())
 app.use(users.routes(), users.allowedMethods())
 
 // error-handling

@@ -10,9 +10,6 @@ require('./model/index')
 seq.authenticate().then(() => {
     console.log('auth ok')
 }).catch((e) => {
-    console.log('============================')
-
-    console.log(e)
     console.log('auth err')
 })
 

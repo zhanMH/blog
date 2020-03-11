@@ -10,5 +10,6 @@ module.exports = {
     DECIMAL: Sequelize.DECIMAL,
     TEXT: Sequelize.TEXT,
     INTEGER: Sequelize.INTEGER,
-    BOOLEAN: Sequelize.BOOLEAN
+    BOOLEAN: Sequelize.BOOLEAN,
+    CHAR: Sequelize.CHAR
 }
