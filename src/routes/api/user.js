@@ -4,7 +4,10 @@
  */
 
  const router= require('koa-router')()
-
+ const {
+    isExist,
+    register
+} = require('../../controller/user')
  router.prefix('/api/user')
 
 //  注册
