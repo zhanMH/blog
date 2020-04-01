@@ -1,2 +1,4 @@
 src/conf/db.js
 node_modules
+src/conf/serve.js
+src/conf/secretKeys.js

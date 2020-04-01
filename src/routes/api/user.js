@@ -13,9 +13,12 @@
 //  注册
 router.post('/register',async (ctx,next)=>{
     const{userName,password,phone}=ctx.request.body
-    console.log(userName,password,phone)
     ctx.body={phone,userName,password}
-    // console.log(ctx.request)
+    ctx.body=await register({
+        userName,
+        password,
+        phone
+    })
 })
 
 module.exports = router

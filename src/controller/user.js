@@ -1,6 +1,6 @@
 /**
  * @description user controller
- * @author 双越老师
+ * @author 初玖
  */
 
 const {
@@ -46,7 +46,7 @@ async function register({ userName, password, phone }) {
     try {
         await createUser({
             userName,
-            password,
+            password:doCrypto(password),
             phone
         })
         return new SuccessModel()

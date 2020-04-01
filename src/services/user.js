@@ -4,6 +4,7 @@
  */
 
 const { User } = require('../db/model/index')
+const { formatUser } = require('./_format')
 
 /**
  * 获取用户信息
@@ -34,12 +35,25 @@ async function getUserInfo(userName, password) {
 
     return formatRes
 }
-
+/**
+ * 创建用户
+ * @param {string} password 密码
+ * @param {string} userName 用户名
+ * @param {string} phnoe 手机
+ */
 async function createUser({userName,password,phone}){
-    
+    const result=await User.create({
+        userName,
+        password,
+        nickName:userName,
+        phone
+    })
+    const data=result.dataValues
+    return data
 }
 
 
 module.exports = {
     getUserInfo,
+    createUser
 }

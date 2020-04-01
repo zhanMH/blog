@@ -19,14 +19,14 @@ seq.authenticate().then(() => {
 // 
 // 动态修改
 // 修改同名数据表结构
-//seq.sync({alter:trur})
+//seq.sync({alter:true})
 // 
 // 强制同步
 // 删除同名数据表后同步，会导致之前的数据丢失
 //seq.sync({force:true})
 // 
 // 执行同步
-seq.sync().then(() => {
+seq.sync({alter:true}).then(() => {
     console.log('sync ok')
     process.exit()
 })
