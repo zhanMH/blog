@@ -4,9 +4,11 @@
  */
 
 const User = require('./User')
+const SMS = require('./SMS')
 
 
 
 module.exports = {
-    User
+    User,
+    SMS
 }

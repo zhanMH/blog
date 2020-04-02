@@ -10,6 +10,7 @@ const cors = require('koa2-cors')
 
 // const index = require('./routes/index')
 const users = require('./src/routes/api/user')
+const SMS = require('./src/routes/api/SMS')
 
 // error handler
 onerror(app)
@@ -47,6 +48,7 @@ app.use(async (ctx, next) => {
 
 // routes
 app.use(users.routes(), users.allowedMethods())
+app.use(SMS.routes(), SMS.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
