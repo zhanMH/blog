@@ -21,9 +21,10 @@ const {
  * @param {string} phone 手机号
  */
 async function send(phone) {
-    console.log(phone+"+++++")
     let code = randomNum(1000,9999)
-    let codeRes=sendCode(phone,code)
+    let codeRes= await sendCode(phone,code)
+    console.log("============")
+
     console.log(codeRes)
     // const userInfo = await getUserInfo(userName)
     // if (userInfo) {

@@ -15,9 +15,8 @@ function callback(err, res, resData) {
       console.log("err: ", err);
       return err
   } else {
-      console.log("request data: ", res.req);
       console.log("response data: ", resData);
-      return res
+      return resData
   }
 }
 /**
@@ -26,8 +25,7 @@ function callback(err, res, resData) {
  * @param {string} code 验证码
  */
 async function sendCode(phone,code){
-    // 需要发送短信的手机号码
-    console.log(phone+'=='+code)
+  // 需要发送短信的手机号码
   let phoneNumbers = [phone];
   let ssender = qcloudsms.SmsSingleSender();
   let params = [code];
