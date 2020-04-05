@@ -4,20 +4,20 @@
  */
 
 const seq = require('../seq')
-const { INTEGER} = require('../types')
+const { STRING} = require('../types')
 
 // users
-const MSM = seq.define('MSM', {
+const SMS = seq.define('SMS', {
     phone: {
-        type: INTEGER,
+        type: STRING,
         allowNull: false,
         comment: '手机'
     },
     code: {
-        type: INTEGER,
+        type: STRING,
         allowNull: false,
         comment: '验证码'
     },
 })
 
-module.exports = MSM
+module.exports = SMS

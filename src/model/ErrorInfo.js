@@ -4,6 +4,11 @@
  */
 
 module.exports = {
+    // 验证码发送失败
+    SMSSendingFailed:{
+        errno: 10001,
+        message: '验证码发送失败'
+    },
     // 用户名已存在
     registerUserNameExistInfo: {
         errno: 10001,

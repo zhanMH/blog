@@ -4,14 +4,14 @@
  */
 
 const {
-    getUserInfo,
-    createUser
-} = require('../services/user')
+    createSMSCode
+} = require('../services/SMS')
 const { SuccessModel, ErrorModel } = require('../model/ResModel')
 const {randomNum} =require('../utils/randomNum')
-const {sendCode} =require('../utils/SMS')
+const {sendCode} =require('../utils/tencentSMS')
+
 const {
-    registerUserNameNotExistInfo,
+    SMSSendingFailed,
     registerUserNameExistInfo,
     registerFailInfo,
 } = require('../model/ErrorInfo')
@@ -22,18 +22,21 @@ const {
  */
 async function send(phone) {
     let code = randomNum(1000,9999)
-    let codeRes= await sendCode(phone,code)
-    console.log("============")
-
-    console.log(codeRes)
-    // const userInfo = await getUserInfo(userName)
-    // if (userInfo) {
-    //     // { errno: 0, data: {....} }
-    //     return new SuccessModel(userInfo)
-    // } else {
-    //     // { errno: 10003, message: '用户名未存在' }
-    //     return new ErrorModel(registerUserNameNotExistInfo)
-    // }
+    console.log(code)
+    let resData= await sendCode(phone,code)
+    resData=JSON.parse(resData).Response
+    // return new SuccessModel(resData.SendStatusSet[0])
+    console.log(resData.SendStatusSet[0])
+    if(resData.SendStatusSet[0].Code!="Ok"){
+        return new ErrorModel(SMSSendingFailed)
+    }
+    try {
+        await createSMSCode({code,phone})
+        return new SuccessModel()
+    } catch (ex) {
+        console.error(ex.message, ex.stack)
+        return new ErrorModel(SMSSendingFailed)
+    }
 }
 
 /**
