@@ -29,8 +29,13 @@ async function sendCode(phone,code){
   let phoneNumbers = [phone];
   let ssender = qcloudsms.SmsSingleSender();
   let params = [code];
-  ssender.sendWithParam("86", phoneNumbers[0], templateId,
-  params, smsSign, "", "", callback); 
+  let resdata=await ssender.sendWithParam("86", phoneNumbers[0], templateId,
+  params, smsSign, "", "",callback); 
+  console.log('-------')
+
+  console.log(resdata)
+
+  return data
 }
 module.exports = {
   sendCode
