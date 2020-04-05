@@ -13,7 +13,8 @@ const { SMS } = require('../db/model/index')
 async function createSMSCode({code,phone}){
     const result=await SMS.create({
         code,
-        phone
+        phone,
+        state:true
     })
     const data=result.dataValues
     return data

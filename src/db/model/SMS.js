@@ -4,7 +4,7 @@
  */
 
 const seq = require('../seq')
-const { STRING} = require('../types')
+const { STRING,BOOLEAN} = require('../types')
 
 // users
 const SMS = seq.define('SMS', {
@@ -18,6 +18,11 @@ const SMS = seq.define('SMS', {
         allowNull: false,
         comment: '验证码'
     },
+    state:{
+        type: BOOLEAN,
+        allowNull: false,
+        comment: '验证码状态'
+    }
 })
 
 module.exports = SMS
